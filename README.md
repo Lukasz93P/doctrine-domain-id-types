@@ -1,4 +1,4 @@
-**doctrine-domain-id-types**
+# doctrine-domain-id-types
 
 This package is based on **ramsey/uuid-doctrine** 
 https://packagist.org/packages/ramsey/uuid-doctrine
@@ -7,16 +7,16 @@ ramsey/uuid-doctrine is a great package which provides new Doctrine column type 
 
 Although uuid column is very useful it's not enough explicit for Domain Driven Design.
 
-For DDD best approach is to use id with meaningful names ex. UserId, CustomerId, ProductId,
+For DDD best approach is to use ids with meaningful names ex. UserId, CustomerId, ProductId,
 instead of Uuid.
 
-This package will help You create new Doctrine column types as aggregates/entities ids.
+This package will help You create new Doctrine column types for aggregates/entities ids.
 
-# Fragment of ramsey's uuid-doctrine documentation:
+## Fragment of ramsey's uuid-doctrine documentation:
 
-## Examples
+### Examples
 
-### Configuration
+#### Configuration
 
 To configure Doctrine to use ramsey/uuid as a field type, you'll need to set up
 the following in your bootstrap:
@@ -46,7 +46,7 @@ return [
                     UuidType::NAME => UuidType::class,
 ```
 
-### Usage
+#### Usage
 
 Then, in your models, you may annotate properties by setting the `@Column`
 type to `uuid`, and defining a custom generator of `Ramsey\Uuid\UuidGenerator`.
@@ -97,9 +97,9 @@ id:
             class: Ramsey\Uuid\Doctrine\UuidGenerator
 ```
 
-# End of ragment of ramsey's uuid-doctrine documentation
+## End of fragment of ramsey's uuid-doctrine documentation
 
-# AggregateId capabilities provided by this package:
+## AggregateId capabilities provided by this package:
 
 ```php
 <?php 
