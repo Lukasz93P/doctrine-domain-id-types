@@ -4,12 +4,11 @@
 namespace Lukasz93P\DoctrineDomainIdTypes\doctrineId;
 
 
-use Assert\Assertion;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Lukasz93P\DoctrineDomainIdTypes\domainId\AggregateId;
 
-abstract class DoctrineAggregateId extends Type
+abstract class AggregateIdDoctrineFieldType extends Type
 {
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
@@ -24,19 +23,24 @@ abstract class DoctrineAggregateId extends Type
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         $this->validateAggregateIdStringValue($value);
-        /** @var AggregateId $aggregateIdImplementationClassName */
-        $aggregateIdImplementationClassName = $this->aggregateIdImplementationClassName();
+        /** @var AggregateId|string $mappedAggregateIdImplementationClassName */
+        $mappedAggregateIdImplementationClassName = $this->mappedAggregateIdImplementationClassName();
 
-        return $aggregateIdImplementationClassName::fromString($value);
+        return $mappedAggregateIdImplementationClassName::fromString($value);
     }
 
     private function validateAggregateIdStringValue($value): void
     {
-        Assertion::notEmpty($value);
-        Assertion::string($value);
+        if (empty($value)) {
+            throw new \InvalidArgumentException('Value cannot be empty.');
+        }
+
+        if (!$value instanceof AggregateId && !is_string($value)) {
+            throw new \InvalidArgumentException('Value have to be instance of ' . AggregateId::class . ' or string.');
+        }
     }
 
-    abstract protected function aggregateIdImplementationClassName(): string;
+    abstract protected function mappedAggregateIdImplementationClassName(): string;
 
     /**
      * @param AggregateId|string $value
