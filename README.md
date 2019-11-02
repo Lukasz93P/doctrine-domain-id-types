@@ -104,6 +104,10 @@ id:
 ```php
 <?php 
 
+
+namespace Lukasz93P\DoctrineDomainIdTypes\domainId;
+
+
 interface AggregateId
 {
     /**
@@ -156,7 +160,10 @@ use Lukasz93P\DoctrineDomainIdTypes\domainId\BaseAggregateId;
 class ProductDoctrineId extends BaseAggregateId implements ProductId
 {
     // BaseAggregateId class provides implementation for all 
-    // methods declared in Lukasz93P\DoctrineDomainIdTypes\domainId\AggregateId
+    // methods declared in Lukasz93P\DoctrineDomainIdTypes\domainId\AggregateId    
+
+    // ! IMPORTANT ! do not create constructor for this class because constructor
+    // of base class Lukasz93P\DoctrineDomainIdTypes\domainId\BaseAggregateId is private final
 }
 ```
 
@@ -192,7 +199,7 @@ class ProductDoctrineIdType extends AggregateIdDoctrineFieldType
 Add field to Doctrine entity in the same way as for ramsey/uuid-doctrine field:
 ```php
     /**
-     * @var \Ramsey\Uuid\UuidInterface
+     * @var ProductId
      *
      * @ORM\Id
      * @ORM\Column(type="product_id", unique=true)
