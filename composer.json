@@ -1,0 +1,22 @@
+{
+    "name": "lukasz93p/doctrine-domain-id-types",
+    "description": "Package which allows to use custom interfaces as entities ids instead of primitive types.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lukasz93P",
+            "email": "lukasz9.3@interia.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lukasz93P\\DoctrineDomainIdTypes\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.1.3",
+        "ramsey/uuid-doctrine": "^1.5",
+        "beberlei/assert": "^3.2"
+    }
+}
