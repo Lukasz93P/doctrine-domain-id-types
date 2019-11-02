@@ -7,6 +7,7 @@ namespace Lukasz93P\DoctrineDomainIdTypes\doctrineId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Lukasz93P\DoctrineDomainIdTypes\domainId\AggregateId;
+use Ramsey\Uuid\UuidInterface;
 
 abstract class AggregateIdDoctrineFieldType extends Type
 {
@@ -36,7 +37,7 @@ abstract class AggregateIdDoctrineFieldType extends Type
         }
 
         if (!$value instanceof AggregateId && !is_string($value)) {
-            throw new \InvalidArgumentException('Value have to be instance of ' . AggregateId::class . ' or string.');
+            throw new \InvalidArgumentException('Value have to be instance of ' . AggregateId::class . ' || ' . UuidInterface::class . ' or string.');
         }
     }
 
