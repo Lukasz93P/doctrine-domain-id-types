@@ -36,7 +36,7 @@ abstract class AggregateIdDoctrineFieldType extends Type
             throw new \InvalidArgumentException('Value cannot be empty.');
         }
 
-        if (!$value instanceof AggregateId && !is_string($value)) {
+        if (!$value instanceof AggregateId && !$value instanceof UuidInterface && !is_string($value)) {
             throw new \InvalidArgumentException('Value have to be instance of ' . AggregateId::class . ' || ' . UuidInterface::class . ' or string.');
         }
     }
