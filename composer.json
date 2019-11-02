@@ -9,6 +9,14 @@
             "email": "lukasz9.3@interia.pl"
         }
     ],
+    "keywords": [
+        "uuid",
+        "id",
+        "doctrine-uuid",
+        "domain-driven-design-id",
+        "ddd-id",
+        "aggregate-id"
+    ],
     "autoload": {
         "psr-4": {
             "Lukasz93P\\DoctrineDomainIdTypes\\": "src/"
