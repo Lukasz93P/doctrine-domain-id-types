@@ -208,6 +208,21 @@ Add field to Doctrine entity in the same way as for ramsey/uuid-doctrine field:
      */
     protected $id;
 ```
+Or resign from auto-generating id field value:
+```php
+    /**
+     * @var ProductId
+     *
+     * @ORM\Id
+     * @ORM\Column(type="product_id", unique=true)
+     */
+    protected $id;
+
+    public function __construct(ProductId $id)
+    {
+        $this->id = $id;
+    }
+```
 
 Register custom field type for Doctrine the same way as for ramsey/uuid-doctrine,
 described above, ex. for Symfony:
