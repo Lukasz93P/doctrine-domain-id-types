@@ -36,10 +36,6 @@ abstract class BaseAggregateId implements AggregateId
 
     public function equals(AggregateId $otherAggregateId): bool
     {
-        if (!$otherAggregateId instanceof static) {
-            return false;
-        }
-
         return $this->toString() === $otherAggregateId->toString();
     }
 
